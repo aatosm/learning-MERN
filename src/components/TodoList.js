@@ -7,7 +7,7 @@ class TodoList extends Component {
 
     let todoItems = this.props.todos.map(todo => {
       return (
-        <TodoItem key={todo.id} item={todo} />
+        <TodoItem key={todo['_id']} item={todo} />
       );
     })
 

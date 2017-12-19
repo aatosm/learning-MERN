@@ -6,7 +6,7 @@ class TodoItem extends Component {
 
     return (
       <li>
-        {this.props.item.title}
+        Task: {this.props.item.task}, Priority: {this.props.item.priority}
       </li>
     );
   }
