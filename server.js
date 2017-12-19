@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const port = 3001;
 
 let todos = [
@@ -14,6 +15,17 @@ let todos = [
     title: "another todo"
   }
 ]
+
+mongoose.connect('mongodb://test:123@ds135956.mlab.com:35956/learning-mern', {
+  useMongoClient: true
+});
+var db = mongoose.connection;
+
+// mongo connection check
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("Connected to MongoDB.")
+});
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
